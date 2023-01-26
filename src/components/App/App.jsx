@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Upload from '../FilesUploadComponent/FilesUploadComponent';
 
 import './App.css';
 
@@ -33,7 +34,7 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <div className="App">
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -46,6 +47,13 @@ function App() {
             path="/about"
           >
             <AboutPage />
+          </Route>
+          <Route
+            // shows AboutPage at all times (logged in or not)
+            exact
+            path="/upload"
+          >
+            <Upload />
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.

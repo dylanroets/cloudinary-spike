@@ -7,8 +7,20 @@ const router = express.Router();
 /**
  * GET route (not sure if we need this yet)
  */
-router.get('/', (req, res) => {
-    // GET route code here
+router.get('/', async (req, res) => {
+    try {
+        const {resources} = await cloudinary.search
+        .expression('folder:spike_setups')
+        .sort_by('public_id', 'desc')
+        .max_results(10)
+        .execute();
+        const publicIds = resources.map((file) => file.public_id );
+        res.send(publicIds);
+        console.log('publicIDs from router.get: ', publicIds);
+    } catch (error) {
+        
+    }
+    
 });
 
 /**

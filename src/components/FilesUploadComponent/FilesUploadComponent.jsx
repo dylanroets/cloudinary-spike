@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -44,7 +44,15 @@ function FilesUploadComponent() {
         });
     }
 
+    // GETting image ids from cloudinary and displaying to dom
+    const [imageIds, setImageIds] = useState();
 
+    // const loadImages = (event) => {
+    //     dispatch({ type: 'FETCH_UPLOADS' })
+    // }
+    useEffect(()=> {
+        dispatch({ type: 'FETCH_UPLOADS' });
+    }, [])
 
 return (
     <>
